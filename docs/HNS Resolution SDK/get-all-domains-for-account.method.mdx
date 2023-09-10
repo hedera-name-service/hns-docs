@@ -1,0 +1,40 @@
+---
+id: get-all-domains-for-an-account
+title: "Get All Domains for an Account"
+sidebar_label: "Get all domains for an account"
+hide_title: true
+custom_edit_url: null
+---
+
+# Resolving Domains from Account IDs
+
+HNS supports reverse resolution to all applications to display HNS names in place of Hedera Account IDs or other data associated with the HNS name(s).
+
+:::warning
+
+HNS does not enforce the accuracy of reverse records - for instance, anyone may claim that the name for their address is `hns.hbar`. To be certain that the claim is correct, you must always perform the reverse resolution and render the returned value(s).
+
+:::
+
+## `Resolver.getAllDomainsForAccount`
+
+### Method:
+
+`getAllDomainsForAccount(accountId: string): Promise<string[]>`
+
+### Parameter: 
+
+`accountId: string`: A Hedera Account ID in the format of `0.0.<Account>`. Read the docs on [Hedera Account IDs](https://docs.hedera.com/hedera/core-concepts/accounts/account-properties#account-id) for more info.
+
+### Return:
+
+`Promise<string[]>`: An array of domains that the the specified `accountId` owns or maps to. The method will return an empty array the `accountId` does not own or resolve to any domains.
+
+### Example:
+
+```javascript
+// Initialize the resolver
+const res = await resolver.getAllDomainsForAccount(`0.0.800`)
+// []
+```
+

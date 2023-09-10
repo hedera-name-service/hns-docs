@@ -1,0 +1,34 @@
+---
+id: resolve-sld
+title: "Resolve domain names"
+sidebar_label: "Resolve domain names"
+hide_title: true
+custom_edit_url: null
+---
+
+# Resolving domain names
+
+Domains can have many types of data associated with them; the most common is cryptocurrency addresses, or in the context of Hedera, account IDs. HNS supports storing and resolving the account IDs from a given domain name, if associated.
+
+## `Resolver.resolveSLD`
+
+### Method:
+
+`resolveSLD(domain: string): Promise<string | undefined>`
+
+### Parameter: 
+
+`domain: string`: Any valid string that could represent a domain name.
+
+### Return:
+
+`Promise<string | undefined>`: If the specified domain name resolves to an account ID, the account ID will be returned. If it does not resolve to an account ID, `undefined` is returned.
+
+### Example:
+
+```javascript
+// Initialize the resolver
+const res = await resolver.resolveSLD(`hns.hbar`)
+// 0.0.838546
+```
+
