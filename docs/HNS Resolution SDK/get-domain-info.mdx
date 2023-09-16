@@ -1,0 +1,62 @@
+---
+id: get-domain-info
+title: "Get Domain Information"
+sidebar_label: "Get domain information"
+hide_title: true
+custom_edit_url: null
+---
+
+# Get Domain Information
+
+You will need to know the domain name, Hedera transaction ID, or the name hash in order to get the domain records.
+
+## `Resolver.getDomainInfo`
+
+### Method:
+
+`getDomainInfo(domainOrNameHashOrTxId: string | NameHash): Promise<DomainInfo>`
+
+### Interface:
+
+```typescript
+interface NameHash {
+    domain: string;
+    tldHash: Buffer;
+    sldHash: Buffer;
+}
+```
+
+```typescript
+interface DomainInfo {
+    transactionId: string;
+    nameHash: NameHash;
+    nftId: string;
+    expiration: number;
+    provider: string;
+    providerData: { contractId: string; }
+    accountId: string;
+}
+```
+
+### Parameter: 
+
+`domainOrNameHashOrTxId: string | NameHash`: A domain name, NameHash object, or [Hedera transaction ID](https://docs.hedera.com/hedera/sdks-and-apis/sdks/transactions/transaction-id). The transaction ID must be in either of these formats: &lt;accountId&gt;@&lt;seconds&gt;.&lt;nanoseconds&gt; or &lt;accountId&gt;-&lt;seconds&gt;.&lt;nanoseconds&gt;.
+
+### Return:
+
+`Promise<DomainInfo>`: An object that represents the requested domain information. 
+
+#### Errors:
+
+`new Error('Invalid Input')`: The parameter is formatted incorrectly or incompatible
+
+`new Error('Unable to find metadata')`: The parameter is not yet registered
+
+### Example:
+
+```javascript
+// Initialize the resolver
+const res = await resolver.getDomainInfo(`hns.hbar`);
+// {}
+```
+

@@ -149,7 +149,7 @@ const config = {
         //     ]
         //   }
         // ],
-        copyright: `Copyright © ${new Date().getFullYear()} Hedera Name Service (HNS)`
+        copyright: `© ${new Date().getFullYear()} Hedera Name Service. All rights reserved.`
       },
       prism: {
         theme: lightCodeTheme,
